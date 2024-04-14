@@ -113,8 +113,8 @@
 
             function randomize() {
                 var dice = document.querySelector(".dice");
-                var randomNumberX = Math.floor(Math.random() * 4) + 1; // Random number for X axis (1 to 4)
-                var randomNumberY = Math.floor(Math.random() * 4) + 1; // Random number for Y axis (1 to 4)
+                var randomNumberX = Math.floor(Math.random() * 6) + 1; // Random number for X axis (1 to 6)
+                var randomNumberY = Math.floor(Math.random() * 6) + 1; // Random number for Y axis (1 to 6)
                 var rotationX = randomNumberX * 90; // Convert to degrees
                 var rotationY = randomNumberY * 90; // Convert to degrees
                 dice.style.transform = "rotateX(" + rotationX + "deg) rotateY(" + rotationY + "deg)";
