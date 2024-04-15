@@ -86,7 +86,7 @@
             }
         </style>
     </head>
-    <body onload="randomize()">
+    <body >
         <div class="dice" id="dice">
             <div class="side s1"><span><u>1</u></span></div>
             <div class="side s2"><span><u>2</u></span></div>
@@ -100,32 +100,46 @@
             function number(x, y) {
 
                 const outputValues = [
-                    [3, 3, 3, 3, 3, 3],
-                    [5, 1, 4, 6, 5, 1],
-                    [2, 2, 2, 2, 2, 2],
-                    [4, 6, 5, 1, 4, 6],
-                    [3, 3, 3, 3, 3, 3],
-                    [5, 1, 4, 6, 5, 1]
+                    [3, 3, 3, 3],
+                    [5, 1, 4, 6],
+                    [2, 2, 2, 2],
+                    [4, 6, 5, 1]
                 ];
 
                 return outputValues[x - 1][y - 1];
             }
 
+            async function test() {
+                var xValues = [1, 2, 3, 4];
+                var yValues = [1, 2, 3, 4];
+                for (var i = 0; i < xValues.length; i++) {
+                    for (var j = 0; j < yValues.length; j++) {
+                        // Print the current combination to the screen
+                        console.log("x" + xValues[i] + ", y" + yValues[j]);
+                        var rotationX = xValues[i] * 90; // Convert to degrees
+                        var rotationY = yValues[j] * 90; // Convert to degrees
+                        dice.style.transform = "rotateX(" + rotationX + "deg) rotateY(" + rotationY + "deg)";
+                        await sleep(3000);
+                    }
+                }
+            }            
+
             function randomize() {
                 var dice = document.querySelector(".dice");
-                var randomNumberX = Math.floor(Math.random() * 6) + 1; // Random number for X axis (1 to 6)
-                var randomNumberY = Math.floor(Math.random() * 6) + 1; // Random number for Y axis (1 to 6)
+                var randomNumberX = Math.floor(Math.random() * 4) + 1; // Random number for X axis (1 to 6)
+                var randomNumberY = Math.floor(Math.random() * 4) + 1; // Random number for Y axis (1 to 6)
                 var rotationX = randomNumberX * 90; // Convert to degrees
                 var rotationY = randomNumberY * 90; // Convert to degrees
                 dice.style.transform = "rotateX(" + rotationX + "deg) rotateY(" + rotationY + "deg)";
                 
-                // Determine the number on top face based on the combination of X and Y axes
-                var numberOnTop = (randomNumberX - 1) * 4 + randomNumberY;
-                
                 document.title = "DICE ROLLER ("+number(randomNumberX,randomNumberY)+")";
-                console.log("Number on top face:", );
+                console.log(randomNumberX+"-"+randomNumberY+" Number:"+number(randomNumberX,randomNumberY));
             }
             document.body.addEventListener("click", randomize);
+            //document.body.addEventListener("click", test);
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
         </script>
     </body>
 </html>
