@@ -11,6 +11,24 @@
                 box-sizing: border-box;
             }
 
+            .center {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            h1 {
+                font-family: "comic sans ms";
+            }
+            
+            .dice-box {
+                width: 350px;
+                height: 350px;
+                perspective: 1200px;
+            }
+
             body{
                 user-select: none;
                 height: 100vh;
@@ -87,13 +105,18 @@
         </style>
     </head>
     <body >
-        <div class="dice" id="dice">
-            <div class="side s1"><span><u>1</u></span></div>
-            <div class="side s2"><span><u>2</u></span></div>
-            <div class="side s3"><span><u>3</u></span></div>
-            <div class="side s4"><span><u>4</u></span></div>
-            <div class="side s5"><span><u>5</u></span></div>
-            <div class="side s6"><span><u>6</u></span></div>
+        <div class="center">
+            <h1>click</h1>
+            <div class="dice-box">
+                <div class="dice" id="dice">
+                    <div class="side s1"><span>1</span></div>
+                    <div class="side s2"><span>2</span></div>
+                    <div class="side s3"><span>3</span></div>
+                    <div class="side s4"><span>4</span></div>
+                    <div class="side s5"><span>5</span></div>
+                    <div class="side s6"><span>6</span></div>
+                </div>
+            </div>
         </div>
 
         <script>
