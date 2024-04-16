@@ -97,6 +97,18 @@
         </div>
 
         <script>
+            function number(x, y) {
+
+                const outputValues = [
+                    [3, 3, 3, 3],
+                    [5, 1, 4, 6],
+                    [2, 2, 2, 2],
+                    [4, 6, 5, 1]
+                ];
+
+                return outputValues[x - 1][y - 1];
+            }
+
             async function test() {
                 var xValues = [1, 2, 3, 4];
                 var yValues = [1, 2, 3, 4];
@@ -113,14 +125,15 @@
             }            
 
             function randomize() {
-                var sides = [[4,4],[3,4],[1,2],[4,1],[4,3],[4,2]];
                 var dice = document.querySelector(".dice");
-                var randomNum = Math.floor(Math.random() * sides.length)
-                var randomSide = sides[randomNum]
-
-                dice.style.transform = "rotateX(" + randomSide[0]*90 + "deg) rotateY(" + randomSide[1]*90 + "deg)";
+                var randomNumberX = Math.floor(Math.random() * 4) + 1; // Random number for X axis (1 to 6)
+                var randomNumberY = Math.floor(Math.random() * 4) + 1; // Random number for Y axis (1 to 6)
+                var rotationX = randomNumberX * 90; // Convert to degrees
+                var rotationY = randomNumberY * 90; // Convert to degrees
+                dice.style.transform = "rotateX(" + rotationX + "deg) rotateY(" + rotationY + "deg)";
                 
-                document.title = "DICE ROLLER ("+(randomNum+1)+")";
+                document.title = "DICE ROLLER ("+number(randomNumberX,randomNumberY)+")";
+                console.log(randomNumberX+"-"+randomNumberY+" Number:"+number(randomNumberX,randomNumberY));
             }
             document.body.addEventListener("click", randomize);
             //document.body.addEventListener("click", test);
